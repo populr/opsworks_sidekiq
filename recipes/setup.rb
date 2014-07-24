@@ -68,7 +68,8 @@ node[:deploy].each do |application, deploy|
         :deploy => deploy,
         :application => application,
         :workers => workers,
-        :syslog => node[:sidekiq][application][:syslog]
+        :syslog => node[:sidekiq][application][:syslog],
+        :redis_url => deploy[:ENV][:REDIS_URL]
       })
       notifies :reload, resources(:service => "monit"), :immediately
     end
