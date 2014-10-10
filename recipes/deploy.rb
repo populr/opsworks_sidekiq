@@ -17,7 +17,6 @@ node[:deploy].each do |application, deploy|
 
   Chef::Log.debug("Running opsworks_sidekiq::setup for application #{application}")
   node.set[:opsworks][:rails_stack][:recipe] = "opsworks_sidekiq::setup"
-  node.set[:opsworks][:rails_stack][:restart_command] = node[:sidekiq][application][:restart_command]
 
   opsworks_rails do
     deploy_data deploy
