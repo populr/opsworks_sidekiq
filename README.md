@@ -64,7 +64,7 @@ By just converting your JSON config object to yaml we support any plugins that u
 
 You can use any name, such as "import_process", "one", "emailer", "slacker", or "fred". You are not stuck to meaningless names such as "worker1".
 
-If the instance is not in a opsworks Rails application server layer then a database.yml and memcached.yml will be generated if they don't exist.
+If the instance is not in a opsworks Rails application server layer then a database.yml will be generated if they don't exist.
 
 ### 'Wrapper/Layer' Cookbooks
 

@@ -61,14 +61,15 @@ node[:deploy].each do |application, deploy|
       end
     end
 
-    template "/etc/monit/conf.d/sidekiq_#{application}.monitrc" do
+    template "/etc/monit.d/sidekiq_#{application}.monitrc" do
       mode 0644
       source "sidekiq_monitrc.erb"
       variables({
         :deploy => deploy,
         :application => application,
         :workers => workers,
-        :syslog => node[:sidekiq][application][:syslog]
+        :syslog => node[:sidekiq][application][:syslog],
+        :redis_url => deploy[:ENV][:REDIS_URL]
       })
       notifies :reload, resources(:service => "monit"), :immediately
     end
